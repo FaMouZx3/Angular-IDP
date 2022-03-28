@@ -1,1 +1,78 @@
-/* You can add global styles to this file, and also import other style files */
+.li-hover {
+    background: #757575 !important;
+}
+
+.dark-mode-body {
+    background: #252525;
+}
+
+.dark-mode-foreground {
+    color: white;
+}
+
+.card {
+    border: transparent;
+}
+
+.card-header {
+    background: #454545;
+    color: white;
+}
+
+.card-body {
+    background: #656565;
+    color: white;
+}
+
+.form-control {
+    background: #454545;
+    color: white;
+    border: transparent;
+}
+
+.form-control::placeholder {
+    color: white;
+}
+
+.list-group {
+    background: #454545;
+}
+
+.list-group-item {
+  background: #454545;
+  color: white;
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.form-control:focus {
+  background: #454545;
+  color: white; 
+}
+
+hr {
+    color: white;
+}
+
+.btn {
+	box-shadow: none !important
+}
+
+.mg {
+    margin-right: 5px;
+}
+
+.mg:last-child {
+    margin-right: 0px;
+}
+
+.ml {
+    margin-left: 18px;
+}

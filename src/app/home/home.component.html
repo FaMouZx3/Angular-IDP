@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="mt-2 d-flex justify-content-end">
+      <button class="btn btn-primary btn-sm mb-2" *ngIf="!isAuthenticated" (click)="login()">Login</button>
+      <button class="btn btn-primary btn-sm mb-2 mg" *ngIf="isAuthenticated" (click)="logout()">Logout</button>
+    </div>
+  
+    <div class="display-4">
+      <p class="dark-mode-foreground unselectable">{{title}}</p>
+    </div>
+    
+    <hr>
+    
+    <div class="card">
+      <div class="card-header unselectable">
+        <h5>Neues Tier hinzufügen</h5>
+      </div>
+  
+      <div class="card-body">
+        <input class="form-control mb-2" type="text" placeholder="Name..." [(ngModel)]="newAnimal.name">
+        <input class="form-control mb-2" type="text" placeholder="Typ..." [(ngModel)]="newAnimal.type">
+        <div class="div-right">
+          <button title="Hinzufügen" class="btn btn-primary btn-sm mb-2 align-right" (click)="addAnimal()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-plus" viewBox="0 0 16 16">
+              <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  
+    <div class="card mt-4">
+      <div class="card-header unselectable">
+        <h5>Auflistung aller Tiere</h5>
+      </div>
+  
+      <div class="card-body">
+        <ul class="list-group">
+          <li class="list-group-item unselectable d-flex justify-content-between align-items-center" *ngFor="let animal of animals" [class.li-hover]="animal.hover" [class.active]="animal.selected"
+          (mouseenter)="mouseEnterSelection(animal)" (mouseleave)="mouseLeaveSelection(animal)" (click)="toggleSelection(animal)">{{animal.name}} ({{animal.type}})
+            <button title="Löschen" class="btn btn-danger btn-sm" [class.delete-btn-visibility]="!animal.selected" (click)="deleteAnimal(animal)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 
+                0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 
+                1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+              </svg>
+            </button>
+        </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card mt-4" *ngIf="selectedAnimal.selected">
+      <div class="card-header unselectable">
+        <h5>Tier bearbeiten</h5>
+      </div>
+
+      <div class="card-body">
+        <div class="d-flex align-items-center">
+          <p class="mg">Name:</p>
+          <input class="form-control mb-2 ml-3" type="text" [(ngModel)]="selectedAnimal.name"/>
+        </div>
+        <div class="d-flex align-items-center">
+          <p class="mg ml">Typ:</p>
+          <input class="form-control mb-2 ml-3" type="text" [(ngModel)]="selectedAnimal.type"/>
+        </div>
+        <div align="right">
+          <button class="btn btn-sm btn-primary" title="Bearbeiten" (click)="updateAnimal()">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path fill="white" d="M9,16V10H5L12,3L19,10H15V16H9M5,20V18H19V20H5Z" />
+           </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,7 @@
+.align-right {
+    float: right;
+}
+
+.delete-btn-visibility {
+    visibility: collapse !important;
+}
